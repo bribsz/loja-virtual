@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,12 +29,12 @@ public class ProdutoController {
 	}
 	
 	@PostMapping("/")
-	public Produto inserir(Produto produto) {
+	public Produto inserir(@RequestBody Produto produto) {
 		return produtoService.inserir(produto);
 	}
 	
 	@PutMapping("/")
-	public Produto alterar(Produto produto) {
+	public Produto alterar(@RequestBody Produto produto) {
 		return produtoService.alterar(produto);
 	}
 	

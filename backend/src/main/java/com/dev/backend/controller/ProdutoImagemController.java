@@ -11,36 +11,39 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.dev.backend.entity.Permissao;
-import com.dev.backend.service.PermissaoService;
+import com.dev.backend.entity.ProdutoImagem;
+import com.dev.backend.service.ProdutoImagemService;
 
 @RestController
-@RequestMapping("/api/permissao")
-public class PermissaoController {
-	
+@RequestMapping("/api/produtoimagem")
+public class ProdutoImagemController {
+
 	@Autowired
-	private PermissaoService permissaoService;
+	private ProdutoImagemService produtoImagemService;
 	
 	@GetMapping("/")
-	public List<Permissao> buscarTodos() {
-		return permissaoService.buscarTodos();
+	public List<ProdutoImagem> buscarTodos() {
+		return produtoImagemService.buscarTodos();
 	}
 	
 	@PostMapping("/")
-	public Permissao inserir(@RequestBody Permissao permissao) {
-		return permissaoService.inserir(permissao);
+	public ProdutoImagem inserir(@RequestParam("idProduto") Long idProduto, @RequestParam("file") MultipartFile file) {
+		return produtoImagemService.inserir(idProduto, file);
 	}
 	
 	@PutMapping("/")
-	public Permissao alterar(@RequestBody Permissao permissao) {
-		return permissaoService.alterar(permissao);
+	public ProdutoImagem alterar(@RequestBody ProdutoImagem produtoImagem) {
+		return produtoImagemService.alterar(produtoImagem);
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
-		permissaoService.excluir(id);
+		produtoImagemService.excluir(id);
 		return ResponseEntity.ok().build();
+		
 	}
 }
