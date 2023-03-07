@@ -30,6 +30,9 @@ public class Pessoa {
 	private String nome;
 	private String cpf;
 	private String email;
+	private String codigoRecuperacaoSenha;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataEnvioCodigo;
 	private String senha;
 	private String endereco;
 	private String cep;
@@ -77,6 +80,21 @@ public class Pessoa {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getCodigoRecuperacaoSenha() {
+		return codigoRecuperacaoSenha;
+	}
+	public void setCodigoRecuperacaoSenha(String codigoRecuperacaoSenha) {
+		this.codigoRecuperacaoSenha = codigoRecuperacaoSenha;
+	}
+	public Date getDataEnvioCodigo() {
+		return dataEnvioCodigo;
+	}
+	public void setDataEnvioCodigo(Date dataEnvioCodigo) {
+		this.dataEnvioCodigo = dataEnvioCodigo;
+	}
+	public List<PermissaoPessoa> getPermissaoPessoas() {
+		return permissaoPessoas;
 	}
 	public String getSenha() {
 		return senha;
